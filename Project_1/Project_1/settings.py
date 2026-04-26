@@ -32,7 +32,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-lx+^e5v(#5vw^-l^a149k
 # Set DEBUG=False in your PythonAnywhere environment variables or .env
 DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 
-ALLOWED_HOSTS = ['RNAOOO.pythonanywhere.com', '127.0.0.1', 'localhost','.onrender.com']
+ALLOWED_HOSTS = ['RNAOOO.pythonanywhere.com', '127.0.0.1', 'localhost',os.environ.get('RENDER_EXTERNAL_HOSTNAME')]
 
 
 # Application definition
