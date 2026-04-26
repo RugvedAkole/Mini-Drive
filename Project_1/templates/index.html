@@ -1,0 +1,125 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CloudDrive | Personal Academic Cloud</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container nav-content">
+            <a href="{% url 'index' %}" class="logo">
+                <div class="logo-icon"><i data-lucide="cloud"></i></div>
+                <span>CloudDrive</span>
+            </a>
+            <div class="nav-links">
+                <a href="{% url 'browse' %}" class="nav-link">Browse</a>
+                <a href="{% url 'upload' %}" class="nav-link">Upload</a>
+                {% if user.is_authenticated %}
+                    <div class="user-menu">
+                        <span class="nav-link">Hi, {{ user.username }}</span>
+                        <a href="{% url 'logout' %}" class="btn btn-outline">Logout</a>
+                    </div>
+                {% else %}
+                    <a href="{% url 'login' %}" class="nav-link">Login</a>
+                    <a href="{% url 'signup' %}" class="nav-link">Sign Up</a>
+                {% endif %}
+                <a href="{% url 'admin-dashboard' %}" class="btn btn-primary">Admin Dashboard</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero" style="position: relative; overflow: hidden;">
+        <!-- Animated Background Elements -->
+        <i data-lucide="cloud" class="floating-bg-icon" style="top: 20%; left: 10%; width: 120px; height: 120px; animation-duration: 12s;"></i>
+        <i data-lucide="cloud" class="floating-bg-icon" style="top: 60%; right: 5%; width: 180px; height: 180px; animation-duration: 15s; animation-delay: 2s;"></i>
+        <i data-lucide="graduation-cap" class="floating-bg-icon" style="top: 70%; left: 15%; width: 80px; height: 80px; animation-duration: 10s; animation-delay: 1s;"></i>
+        <i data-lucide="file-text" class="floating-bg-icon" style="top: 30%; right: 20%; width: 60px; height: 60px; animation-duration: 14s; animation-delay: 3s;"></i>
+
+        <div class="container">
+            <div class="hero-content">
+                <span class="badge-new">NEW: 100MB FREE STORAGE</span>
+                <h1 class="hero-title">Your Personal <span class="gradient-text">Academic Cloud</span></h1>
+                <p class="hero-subtitle">A secure, private mini-drive to store, organize, and access your study materials from anywhere.</p>
+                <div class="hero-actions">
+                    <a href="{% url 'browse' %}" class="btn btn-primary btn-lg">Open My Drive</a>
+                    <a href="{% url 'signup' %}" class="btn btn-outline btn-lg">Create Account</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="features">
+        <div class="container grid-3">
+            <div class="card feature-card">
+                <div class="icon-box primary"><i data-lucide="lock"></i></div>
+                <h3>100% Private</h3>
+                <p>Your files are stored securely and are only visible to you. Nobody else can access your documents.</p>
+            </div>
+            <div class="card feature-card">
+                <div class="icon-box secondary"><i data-lucide="hard-drive"></i></div>
+                <h3>Storage Quota</h3>
+                <p>Manage your files efficiently with a generous personal storage limit to keep everything organized.</p>
+            </div>
+            <div class="card feature-card">
+                <div class="icon-box accent"><i data-lucide="smartphone"></i></div>
+                <h3>Anywhere Access</h3>
+                <p>Upload from your PC and access your notes on your phone before the exam.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="restricted-section">
+        <div class="container">
+            <div class="auth-card" style="max-width: 900px; margin: 0 auto; padding: 60px;">
+                <i data-lucide="cloud-off" style="width: 48px; height: 48px; color: var(--primary); margin-bottom: 20px;"></i>
+                <h2>Access Your Personal Drive</h2>
+                <p>Log in to access your private storage space and manage your academic files securely.</p>
+                <div style="margin-top: 30px; display: flex; gap: 15px; justify-content: center;">
+                    <a href="{% url 'login' %}" class="btn btn-primary">Log In Now</a>
+                    <a href="{% url 'signup' %}" class="btn btn-outline">Create Account</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container footer-content">
+            <div>
+                <div class="logo footer-logo">
+                    <div class="logo-icon"><i data-lucide="cloud"></i></div>
+                    <span>CloudDrive</span>
+                </div>
+                <p class="footer-text">Your personal academic cloud storage solution.</p>
+            </div>
+            <div>
+                <h4 class="footer-title">Platform</h4>
+                <ul class="footer-links">
+                    <li><a href="{% url 'browse' %}">My Drive</a></li>
+                    <li><a href="{% url 'upload' %}">Upload Center</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="footer-title">Support</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>© 2026 CloudDrive Platform. All rights reserved.</p>
+            <p>Designed for academic excellence.</p>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
